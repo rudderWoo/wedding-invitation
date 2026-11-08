@@ -38,6 +38,12 @@
   ].map(([selector,en]) => {const el=document.querySelector(selector); return {el,ko:el.textContent,en};});
   const attrs = [
     ['.language-toggle','aria-label','Choose language'],
+    ['.venue-map-open','aria-label','Open full-size directions map'],
+    ['#map-viewer','aria-label','Full-size directions map'],
+    ['.map-viewer-close','aria-label','Close directions map'],
+    ['#map-zoom-out','aria-label','Zoom out map'],
+    ['#map-zoom-in','aria-label','Zoom in map'],
+    ['#map-zoom-reset','aria-label','Reset map zoom'],
     ['.down','aria-label','Read our invitation'],
     ['.calendar','aria-label','January 2027 calendar. Our wedding is on Sunday, January 24.'],
     ['.gallery','aria-label','Wedding photo gallery'],
