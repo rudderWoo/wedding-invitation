@@ -1,0 +1,61 @@
+:root{color-scheme:light;--ink:#414037;--muted:#76746d;--line:#b5b3ac;--paper:#fff;--font:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI","Malgun Gothic",sans-serif}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:30px}body{margin:0;background:#eeedea;color:var(--ink);font-family:var(--font);-webkit-font-smoothing:antialiased}main{max-width:520px;margin:auto;background:var(--paper);overflow:hidden}.cover{position:relative}.cover img{display:block;width:100%;height:auto}.down{display:block;text-align:center;text-decoration:none;color:var(--muted);font-size:23px;padding:5px 0 26px}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}section{text-align:center;padding:48px 30px 56px}.rule{display:flex;align-items:center;gap:22px;margin:0 -30px 45px;font-size:36px;font-weight:400;font-family:var(--font);font-style:normal;white-space:nowrap;letter-spacing:-1.5px}.rule:before,.rule:after{content:"";height:1px;background:var(--line);flex:1}.message{font-size:15px;line-height:2.4;letter-spacing:-.4px;margin:0}.families{margin:44px auto 0;display:table}.families p{display:flex;justify-content:center;align-items:baseline;gap:9px;margin:15px 0;font-size:15px}.families small{font-size:11px;color:var(--muted)}.families strong{font-size:19px;font-weight:500;margin-left:7px}.date-section{padding-top:24px}.eyebrow{font-size:10px;letter-spacing:3px;margin:8px 0 18px;color:var(--muted)}.date-title{font-family:var(--font);font-weight:400;font-size:31px;letter-spacing:-1px;margin:0 0 17px}.time{font-size:14px}.calendar{margin:35px 0 25px}.week,.days{display:grid;grid-template-columns:repeat(7,1fr)}.week{border-bottom:1px solid var(--line);padding-bottom:16px;font-family:var(--font);font-size:10px;gap:3px}.days{row-gap:9px;padding-top:14px;font-family:var(--font);font-size:15px}.days span{height:37px;display:grid;place-items:center;position:relative}.days .wedding-day{color:white;isolation:isolate}.wedding-day:before{content:"♥";position:absolute;z-index:-1;font-size:47px;color:#272720;line-height:1;top:-5px}.countdown{font-size:12px;line-height:1.8;margin:27px 0;color:var(--muted)}.button{font:400 12px var(--font);color:var(--ink);background:#fff;border:1px solid #cccac4;border-radius:0;min-height:46px;padding:13px 22px;display:inline-flex;justify-content:center;align-items:center;gap:20px;text-decoration:none;cursor:pointer}.button:hover{background:#f5f4f1}.button:focus-visible,button:focus-visible,a:focus-visible,.gallery:focus-visible{outline:2px solid #565449;outline-offset:5px}.gallery-section{padding:48px 24px 56px}.gallery-section .rule{margin-left:-24px;margin-right:-24px;margin-bottom:18px}.section-note{font-size:12px;color:var(--muted);margin:0 0 32px}.gallery{overflow:hidden}.track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain}.track::-webkit-scrollbar{display:none}.photo-placeholder,.track figure{flex:0 0 100%;scroll-snap-align:center;aspect-ratio:3/4;background:#f4f3ef;margin:0;display:flex;flex-direction:column;align-items:center;justify-content:center}.photo-placeholder>span{font-size:60px;color:#d1cfc7;font-style:normal}.photo-placeholder p{font-size:12px;color:#77746c;margin:24px 0 10px}.photo-placeholder small{font:400 12px var(--font);color:#99958a}.track img{width:100%;height:100%;object-fit:cover;display:block}.gallery-controls{display:flex;align-items:center;justify-content:center;gap:24px;margin-top:18px}.gallery-controls button{background:none;border:0;color:var(--ink);cursor:pointer;min-width:44px;min-height:44px;font-size:21px}.dots{display:flex;gap:0}.dots button{min-width:27px;min-height:44px;position:relative}.dots button:after{content:"";position:absolute;top:19px;left:11px;width:5px;height:5px;border-radius:50%;background:#d5d2ca}.dots button[aria-current="true"]:after{background:var(--ink)}.location .rule{margin-bottom:35px}.location .eyebrow{letter-spacing:2px;font-size:11px}.location h3{font-size:22px;font-weight:400;margin:25px 0 18px}.location>p:not(.eyebrow){font-size:14px;line-height:2}.map-links{display:flex;justify-content:center;gap:10px;margin-top:30px}.map-links .button{flex:1;gap:8px;padding-inline:12px}footer{text-align:center;padding:50px 28px 60px;border-top:1px solid #e5e3dd;margin:15px 30px 0}.closing{font-size:13px;line-height:2.1}.signature{font:300 29px var(--font);margin-top:38px}.footer-date{font:400 11px var(--font);letter-spacing:3px;color:var(--muted)}@media(min-width:521px){main{box-shadow:0 0 60px #00000005}.message{font-size:17px}.mobile-break{display:none}section{padding-left:46px;padding-right:46px}.rule{margin-left:-46px;margin-right:-46px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{scroll-behavior:auto!important}}
+
+/* The cover lettering is live text so the webfont applies here too. */
+.cover{padding-top:34px}.cover-rule{display:flex;align-items:center;gap:14px;margin:0 0 25px;font-size:17px;font-weight:300}.cover-rule:before,.cover-rule:after{content:"";flex:1;height:1px;background:var(--line)}.cover-name{text-align:center;font-size:clamp(24px,7vw,38px);font-weight:300;letter-spacing:-1px;margin:0 15px}.cover-scene{position:relative;margin:28px 0 24px;display:flex;justify-content:center;align-items:center}.cover-art{position:relative;width:64%;aspect-ratio:600/820;overflow:hidden}.cover-art img{position:absolute;width:181.1667%;max-width:none;height:auto;left:-42%;top:-43.9%}.cover-side{position:absolute;margin:0;font-size:11px;letter-spacing:1px;writing-mode:vertical-rl;font-weight:300}.cover-date{left:7%}.cover-venue{right:7%;transform:rotate(180deg)}.cover-name+.cover-rule{margin-top:25px;margin-bottom:22px}.cover-invite{text-align:center;font-size:13px;font-weight:300;line-height:1.8;letter-spacing:.3px;margin:0 20px 20px}
+
+
+/* Review refinements: live serif names, inset rules, compact swipe gallery. */
+.cover-name{font-family:"Cormorant Garamond",Garamond,"Times New Roman",serif;font-weight:400;font-optical-sizing:auto;font-size:clamp(29px,8.1vw,45px);letter-spacing:-1.2px;line-height:1.2}.cover-rule{margin-left:24px;margin-right:24px}.cover-name+.cover-rule{margin-left:24px;margin-right:24px}.rule{margin-left:0!important;margin-right:0!important}.invitation,.location{padding-left:24px;padding-right:24px}.message{line-height:1.8;word-break:keep-all}.message p{margin:0 0 16px}.message p:last-child{margin-bottom:0}.gallery-section{padding-top:30px;padding-bottom:32px}.gallery-section .rule{font-size:29px;margin-bottom:16px}.gallery-section .section-note{margin-bottom:24px}.track{position:relative;gap:12px;touch-action:pan-x pan-y}.photo-placeholder,.track figure{flex-basis:calc((100% - 6px)/1.5);scroll-snap-align:start;user-select:none;-webkit-user-select:none}.track:after{content:"";flex:0 0 calc(33.333% - 8px)}.track img{pointer-events:none;-webkit-user-drag:none;touch-action:pan-x pan-y}.photo-placeholder>span{font-size:44px}.photo-placeholder p{font-size:10px;margin-top:18px}.photo-placeholder small{font-size:10px}.gallery-controls{margin-top:10px}.location{padding-bottom:64px}
+
+
+.cover-rule{font-family:"Cormorant Garamond",Garamond,"Times New Roman",serif;font-weight:400}
+#invitation>.rule{display:block;font-family:"Cormorant Garamond",Garamond,"Times New Roman",serif;font-size:14px;font-weight:400;font-style:normal;letter-spacing:0}
+#invitation>.rule:before,#invitation>.rule:after{content:none}
+
+
+/* Section titles share the OUR WEDDING DAY eyebrow style. */
+#invitation>.rule,.gallery-section>.rule,.location>.rule{
+  display:block;
+  font-family:var(--font);
+  font-size:10px;
+  font-weight:400;
+  font-style:normal;
+  line-height:normal;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin:8px 0 18px!important;
+}
+#invitation>.rule:before,#invitation>.rule:after,
+.gallery-section>.rule:before,.gallery-section>.rule:after,
+.location>.rule:before,.location>.rule:after{content:none}
+.message p{margin-bottom:6px}
+.wedding-day:before{top:-2px}
+.date-title{font-size:clamp(23px,6vw,31px);letter-spacing:-.6px;white-space:nowrap}
+.map-preview{display:block;width:100%;height:260px;border:0;margin-top:28px;background:#f4f3ef}
+
+
+.track figure{overflow:hidden}.track figure img{object-fit:contain;background:#f4f3ef}#gallery-count{font-size:11px;letter-spacing:2px;color:var(--muted);font-variant-numeric:tabular-nums}
+
+
+.cover-art.cover-photo{aspect-ratio:2/3;border-radius:9999px;overflow:hidden}
+.cover-art.cover-photo img{position:static;width:100%;height:100%;max-width:100%;object-fit:cover;display:block}
+
+
+.cover-handwriting{position:absolute;z-index:1;top:9%;left:0;width:100%;margin:0;text-align:center;font-family:"Oooh Baby",cursive;font-size:clamp(64px,18vw,94px);font-weight:400;line-height:1.15;letter-spacing:-1px;color:#414037;transform:rotate(-9deg);pointer-events:none;white-space:nowrap}
+
+
+.cover-handwriting{font-size:clamp(48px,14vw,72px);letter-spacing:-1.5px;transform:rotate(-6deg);top:10%;color:#292d2b}
+
+.cover .lettering-image{width:90%;height:auto;left:5%;top:7%;transform:rotate(-5deg);display:block}
+
+
+/* Reveal the transparent lettering once, after its image has loaded. */
+@media(prefers-reduced-motion:no-preference){
+  .cover .lettering-image.lettering-ready{animation:lettering-write 2.8s cubic-bezier(.22,.55,.35,1) .35s both}
+}
+@keyframes lettering-write{
+  from{clip-path:inset(0 100% 0 0)}
+  to{clip-path:inset(0 0 0 0)}
+}
+
