@@ -11,7 +11,7 @@ for (let day = 18; day <= 31; day++) {
 function updateCountdown() {
   const today = new Intl.DateTimeFormat('en-CA', {timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
   const remaining = Math.round((Date.parse('2027-01-24T00:00:00+09:00') - Date.parse(today+'T00:00:00+09:00')) / 86400000);
-  document.querySelector('#countdown').textContent = remaining > 0 ? `종규와 해빈의 결혼식이 ${remaining}일 남았습니다. ♥` : remaining === 0 ? '오늘, 저희 결혼합니다.' : '함께해 주셔서 감사합니다.';
+  document.querySelector('#countdown-text').textContent = remaining > 0 ? `종규와 해빈의 결혼식이 ${remaining}일 남았습니다` : remaining === 0 ? '오늘, 저희 결혼합니다' : '함께해 주셔서 감사합니다';
 }
 updateCountdown();
 setInterval(updateCountdown, 60000);
@@ -38,30 +38,67 @@ update(0);
 
 track.addEventListener('dblclick', event => event.preventDefault());
 
-const lettering = document.querySelector(".lettering-image");
-if (lettering) {
-  const revealLettering = () => lettering.classList.add("lettering-ready");
-  if (lettering.complete && lettering.naturalWidth > 0) revealLettering();
-  else lettering.addEventListener("load", revealLettering, { once: true });
+const lettering = document.querySelector('.lettering-fallback');
+const letteringScene = document.querySelector('.cover-scene');
+const letteringMotion = matchMedia('(prefers-reduced-motion: reduce)');
+if (lettering && letteringScene) {
+  let hasStarted = false;
+  const finishLettering = () => letteringScene.classList.remove('lettering-running');
+  const startLettering = () => {
+    if (hasStarted || letteringMotion.matches || !lettering.naturalWidth) return;
+    hasStarted = true;
+    letteringScene.classList.add('lettering-running');
+  };
+  const lastStroke = document.querySelector('.lettering-strokes path:last-child');
+  lastStroke.addEventListener('animationend', finishLettering);
+  letteringMotion.addEventListener('change', event => { if (event.matches) finishLettering(); });
+  if (lettering.complete) startLettering();
+  else lettering.addEventListener('load', startLettering, { once: true });
 }
+
 
 
 const viewer = document.querySelector('#photo-viewer');
-const viewerImage = document.querySelector('#viewer-image');
+const viewerTrack = document.querySelector('#viewer-track');
 let viewerIndex = 0;
 let viewerOpener;
-function displayLarge(index) {
-  viewerIndex = (index + slides.length) % slides.length;
-  const photo = slides[viewerIndex].querySelector('img');
-  viewerImage.src = photo.src;
-  viewerImage.alt = photo.alt;
-  document.querySelector('#viewer-count').textContent = (viewerIndex + 1) + ' / ' + slides.length;
+let openedWithKeyboard = false;
+const viewerPhotos = slides.map(slide => {
+  const frame = document.createElement('div');
+  frame.className = 'viewer-slide';
+  const photo = slide.querySelector('img');
+  const image = document.createElement('img');
+  image.alt = photo.alt;
+  image.draggable = false;
+  image.decoding = 'async';
+  frame.append(image);
+  viewerTrack.append(frame);
+  return {image, source:photo.src};
+});
+function loadLarge(index) {
+  for (const offset of [-1, 0, 1]) {
+    const item = viewerPhotos[(index + offset + slides.length) % slides.length];
+    if (!item.image.getAttribute('src')) item.image.src = item.source;
+  }
 }
-function openLarge(index) {
-  viewerOpener = document.activeElement;
-  displayLarge(index);
+function updateLarge(index) {
+  viewerIndex = index;
+  loadLarge(index);
+  document.querySelector('#viewer-count').textContent = (index + 1) + ' / ' + slides.length;
+}
+function displayLarge(index, instant = false) {
+  index = (index + slides.length) % slides.length;
+  loadLarge(index);
+  viewerTrack.scrollTo({left: index * viewerTrack.clientWidth,
+    behavior: instant || letteringMotion.matches ? 'instant' : 'smooth'});
+  if (instant) updateLarge(index);
+}
+function openLarge(index, keyboard = false) {
+  viewerOpener = slides[index];
+  openedWithKeyboard = keyboard;
   viewer.showModal();
   document.body.style.overflow = 'hidden';
+  displayLarge(index, true);
 }
 slides.forEach((slide, index) => {
   slide.tabIndex = 0;
@@ -69,13 +106,40 @@ slides.forEach((slide, index) => {
   slide.addEventListener('click', () => openLarge(index));
   slide.addEventListener('keydown', event => {
     if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault(); openLarge(index);
+      event.preventDefault(); openLarge(index, true);
     }
   });
 });
+viewerTrack.addEventListener('scroll', () => {
+  if (viewerTrack.clientWidth) updateLarge(Math.max(0, Math.min(slides.length - 1,
+    Math.round(viewerTrack.scrollLeft / viewerTrack.clientWidth))));
+}, {passive:true});
+new ResizeObserver(() => { if (viewer.open) displayLarge(viewerIndex, true); }).observe(viewerTrack);
+// Touch uses native scrolling and snapping; mouse dragging follows the same strip.
+let viewerDrag;
+viewerTrack.addEventListener('pointerdown', event => {
+  if (event.pointerType !== 'mouse' || event.button !== 0) return;
+  viewerDrag = {x:event.clientX, left:viewerTrack.scrollLeft};
+  viewerTrack.setPointerCapture(event.pointerId);
+  viewerTrack.classList.add('dragging');
+});
+viewerTrack.addEventListener('pointermove', event => {
+  if (viewerDrag) viewerTrack.scrollLeft = viewerDrag.left - (event.clientX - viewerDrag.x);
+});
+function finishViewerDrag(event) {
+  if (!viewerDrag) return;
+  const distance = event.clientX - viewerDrag.x;
+  const origin = Math.round(viewerDrag.left / viewerTrack.clientWidth);
+  viewerDrag = null;
+  viewerTrack.classList.remove('dragging');
+  displayLarge(Math.max(0, Math.min(slides.length - 1,
+    origin + (Math.abs(distance) > 45 ? (distance < 0 ? 1 : -1) : 0))));
+}
+viewerTrack.addEventListener('pointerup', finishViewerDrag);
+viewerTrack.addEventListener('pointercancel', () => {
+  viewerDrag = null; viewerTrack.classList.remove('dragging');
+});
 viewer.querySelector('.viewer-close').addEventListener('click', () => viewer.close());
-viewer.querySelector('.viewer-prev').addEventListener('click', () => displayLarge(viewerIndex - 1));
-viewer.querySelector('.viewer-next').addEventListener('click', () => displayLarge(viewerIndex + 1));
 viewer.addEventListener('keydown', event => {
   if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
     event.preventDefault(); displayLarge(viewerIndex + (event.key === 'ArrowRight' ? 1 : -1));
@@ -84,5 +148,67 @@ viewer.addEventListener('keydown', event => {
 viewer.addEventListener('click', event => { if (event.target === viewer) viewer.close(); });
 viewer.addEventListener('close', () => {
   document.body.style.overflow = '';
-  if (viewerOpener) viewerOpener.focus({preventScroll:true});
+  viewerDrag = null;
+  viewerTrack.classList.remove('dragging');
+  if (viewerOpener) {
+    if (openedWithKeyboard) viewerOpener.focus({preventScroll:true});
+    else viewerOpener.blur();
+  }
+});
+
+// One-time section reveals; content stays visible without JS or with reduced motion.
+const revealSections = [...document.querySelectorAll('main > section')];
+if ('IntersectionObserver' in window && !letteringMotion.matches) {
+  const sectionObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('section-visible');
+        sectionObserver.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.06, rootMargin:'0px 0px -6% 0px'});
+  revealSections.forEach(section => {
+    section.classList.add('section-reveal');
+    if (section.getBoundingClientRect().top < window.innerHeight * .94) {
+      section.classList.add('section-visible');
+    } else sectionObserver.observe(section);
+    section.addEventListener('focusin', () => section.classList.add('section-visible'));
+  });
+  letteringMotion.addEventListener('change', event => {
+    if (event.matches) {
+      sectionObserver.disconnect();
+      revealSections.forEach(section => section.classList.add('section-visible'));
+    }
+  });
+}
+
+let snackbarTimer;
+function showCopySnackbar(message, duration = 2600) {
+  const snackbar = document.querySelector('#copy-status');
+  clearTimeout(snackbarTimer);
+  snackbar.textContent = message;
+  snackbar.classList.add('is-visible');
+  snackbarTimer = setTimeout(() => {
+    snackbar.classList.remove('is-visible');
+    snackbar.textContent = '';
+  }, duration);
+}
+// Account data is copied only by an explicit button click.
+document.querySelectorAll('.copy-account').forEach(button => {
+  button.addEventListener('click', async () => {
+    const number = button.dataset.account.trim();
+    if (!number) return;
+    try {
+      await navigator.clipboard.writeText(number);
+      showCopySnackbar('계좌번호를 복사했습니다');
+      button.textContent = '복사 완료';
+      setTimeout(() => { button.textContent = '복사하기'; }, 1800);
+    } catch {
+      const selection = window.getSelection();
+      const range = document.createRange();
+      range.selectNodeContents(button.closest('.account-card').querySelector('.account-number'));
+      selection.removeAllRanges(); selection.addRange(range);
+      showCopySnackbar('자동 복사가 되지 않았습니다. 선택된 계좌번호를 길게 눌러 복사해 주세요', 6000);
+    }
+  });
 });
