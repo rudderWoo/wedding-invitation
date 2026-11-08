@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1448 1086" role="img" aria-labelledby="title desc">
+<title id="title">Apelgamo Gwanghwamun directions</title><desc id="desc">Tower A, LL Floor, The K Twin Towers. Gyeongbokgung Station Exit 6 and Gwanghwamun Station Exit 2.</desc>
+<rect width="1448" height="1086" fill="white"/>
+<g fill="none" stroke="#414037" stroke-width="2">
+<path d="M40 312H1404 M40 364H263 V1018 M317 364V557H646 M317 581V887H646 M317 1018V940H648 M1404 887H1153L1279 364 M1251 364L1121 887H1044L920 582L1048 364 M1404 940H1044 M1019 364H715L686 557 M1010 887L880 581H692V887 M648 940V1018 M692 940V1018 M1044 940H1404"/>
+<circle cx="669" cy="567" r="23"/><circle cx="669" cy="894" r="23"/>
+</g>
+<g fill="none" stroke="#aaa" stroke-width="1.5" stroke-dasharray="15 17"><path d="M289 367V890 M290 338H1404 M693 370L674 542 M669 595V870 M932 553L1031 373 M935 613L1026 874 M380 914H642 M698 914H1404"/></g>
+<g fill="#414037"><circle cx="298" cy="249" r="7"/><circle cx="170" cy="428" r="6"/><circle cx="360" cy="641" r="6"/><circle cx="360" cy="770" r="6"/><circle cx="724" cy="804" r="6"/><circle cx="992" cy="647" r="6"/><circle cx="1299" cy="514" r="6"/></g>
+<g font-family="Arial,Helvetica,sans-serif" font-weight="300" font-size="25" fill="#414037" text-anchor="middle">
+<text x="290" y="221">Gwanghwamun Gate</text><text x="593" y="347">Yulgok-ro</text>
+<text x="154" y="475">Government</text><text x="154" y="507">Seoul Complex</text>
+<text x="482" y="451">Gwanghwamun</text><text x="482" y="485">Citizen Open Square</text>
+<text x="494" y="652">National Museum of</text><text x="494" y="685">Korean Contemporary History</text>
+<text x="473" y="788">U.S. Embassy</text><text x="1324" y="559">Jogyesa</text><text x="1324" y="591">Temple</text>
+<text x="1078" y="665">Seoul Regional</text><text x="1078" y="698">Tax Office</text>
+<text x="834" y="825">Jongno Fire Station</text>
+<text transform="translate(285 714) rotate(-90)">Sejong-daero</text>
+</g>
+<g stroke="#414037" stroke-width="2" fill="white"><rect x="38" y="283" width="310" height="62" rx="31"/><rect x="65" y="893" width="300" height="62" rx="31"/></g>
+<g fill="#414037" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="24" font-weight="300"><text x="193" y="309">Gyeongbokgung Station</text><text x="193" y="334" font-size="20">Line 3</text><text x="215" y="920">Gwanghwamun Station</text><text x="215" y="946" font-size="20">Line 5</text></g>
+<g fill="#414037"><circle cx="100" cy="368" r="21"/><circle cx="382" cy="923" r="21"/></g><g fill="white" text-anchor="middle" font-family="Arial,sans-serif" font-size="28"><text x="100" y="378">6</text><text x="382" y="933">2</text></g>
+<g stroke="#414037" fill="white" stroke-width="2"><path d="m724 400 37-21 41 21v92l-41 22-37-22Z M761 422v92 M724 400l37 22 41-22 M820 400l38-21 40 21v92l-40 22-38-22Z M858 422v92 M820 400l38 22 40-22"/>
+<path d="m724 418 37 22 41-22 m-78 18 37 22 41-22 m-78 18 37 22 41-22 m-78 18 37 22 41-22 M820 418l38 22 40-22 m-78 18 38 22 40-22 m-78 18 38 22 40-22 m-78 18 38 22 40-22"/>
+</g>
+<g font-family="Arial,Helvetica,sans-serif" font-size="23" font-weight="300" fill="#414037" text-anchor="middle"><text x="762" y="545">Tower A</text><text x="858" y="545">Tower B</text></g>
+<rect x="570" y="143" width="390" height="58" rx="16" fill="#292925"/>
+<text x="765" y="181" text-anchor="middle" fill="white" font-family="Arial,Helvetica,sans-serif" font-size="27" font-weight="300">Apelgamo Gwanghwamun</text>
+<text x="765" y="236" text-anchor="middle" fill="#414037" font-family="Arial,Helvetica,sans-serif" font-size="24" font-weight="300">The K Twin Towers · Tower A, LL Floor</text>
+<path d="M761 254V402" stroke="#414037" stroke-width="2"/><circle cx="761" cy="402" r="8" fill="#292925"/>
+</svg>

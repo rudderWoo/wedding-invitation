@@ -1,3 +1,4 @@
+const t = (key, values) => window.weddingI18n.t(key, values);
 const eventDate = new Date('2027-01-24T12:30:00+09:00');
 const days = document.querySelector('#days');
 const firstWeekday = new Date(Date.UTC(2027, 0, 18)).getUTCDay();
@@ -11,7 +12,7 @@ for (let day = 18; day <= 31; day++) {
 function updateCountdown() {
   const today = new Intl.DateTimeFormat('en-CA', {timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
   const remaining = Math.round((Date.parse('2027-01-24T00:00:00+09:00') - Date.parse(today+'T00:00:00+09:00')) / 86400000);
-  document.querySelector('#countdown-text').textContent = remaining > 0 ? `종규와 해빈의 결혼식이 ${remaining}일 남았습니다` : remaining === 0 ? '오늘, 저희 결혼합니다' : '함께해 주셔서 감사합니다';
+  document.querySelector('#countdown-text').textContent = remaining > 0 ? t('countdown', {days:remaining}) : remaining === 0 ? t('today') : t('thanks');
 }
 updateCountdown();
 setInterval(updateCountdown, 60000);
@@ -21,7 +22,7 @@ let current = 0;
 function update(index) {
   current=index;
   document.querySelector('#gallery-count').textContent = (index+1) + ' / ' + slides.length;
-  document.querySelector('#photo-status').textContent=`사진 ${index+1} / ${slides.length}`;
+  document.querySelector('#photo-status').textContent=t('photoStatus', {index:index+1,total:slides.length});
 }
 function show(index) {
   index=(index+slides.length)%slides.length;
@@ -102,7 +103,7 @@ function openLarge(index, keyboard = false) {
 }
 slides.forEach((slide, index) => {
   slide.tabIndex = 0;
-  slide.setAttribute('aria-label', '사진 ' + (index + 1) + ' / ' + slides.length + ', 크게보기');
+  slide.setAttribute('aria-label', t('photoOpen', {index:index+1,total:slides.length}));
   slide.addEventListener('click', () => openLarge(index));
   slide.addEventListener('keydown', event => {
     if (event.key === 'Enter' || event.key === ' ') {
@@ -200,15 +201,26 @@ document.querySelectorAll('.copy-account').forEach(button => {
     if (!number) return;
     try {
       await navigator.clipboard.writeText(number);
-      showCopySnackbar('계좌번호를 복사했습니다');
-      button.textContent = '복사 완료';
-      setTimeout(() => { button.textContent = '복사하기'; }, 1800);
+      showCopySnackbar(t('copiedMessage'));
+      button.textContent = t('copied');
+      setTimeout(() => { button.textContent = t('copy'); }, 1800);
     } catch {
       const selection = window.getSelection();
       const range = document.createRange();
       range.selectNodeContents(button.closest('.account-card').querySelector('.account-number'));
       selection.removeAllRanges(); selection.addRange(range);
-      showCopySnackbar('자동 복사가 되지 않았습니다. 선택된 계좌번호를 길게 눌러 복사해 주세요', 6000);
+      showCopySnackbar(t('copyFailed'), 6000);
     }
   });
+});
+
+window.addEventListener('wedding-language-change', () => {
+  updateCountdown(); update(current);
+  slides.forEach((slide, index) => {
+    slide.setAttribute('aria-label', t('photoOpen', {index:index+1,total:slides.length}));
+    viewerPhotos[index].image.alt = slide.querySelector('img').alt;
+  });
+  clearTimeout(snackbarTimer);
+  document.querySelector('#copy-status').classList.remove('is-visible');
+  document.querySelector('#copy-status').textContent = '';
 });

@@ -113,3 +113,19 @@
 
 .copy-snackbar{position:fixed;z-index:1000;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,10px);width:max-content;max-width:calc(100vw - 40px);padding:14px 22px;border-radius:8px;background:#414037;color:white;font:400 13px/1.6 var(--font);text-align:center;box-shadow:0 4px 20px #0002;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .2s,transform .2s,visibility .2s}
 .copy-snackbar.is-visible{opacity:1;visibility:visible;transform:translate(-50%,0)}
+
+/* Floating language selector stays within the invitation on large screens. */
+.language-toggle{position:fixed;z-index:50;top:calc(12px + env(safe-area-inset-top,0px));right:max(12px,calc((100vw - 520px)/2 + 12px));display:flex;gap:2px;padding:3px;border:1px solid #deddd8;border-radius:999px;background:rgba(255,255,255,.94);box-shadow:0 2px 12px #00000008}
+.language-toggle button{border:0;border-radius:999px;background:transparent;font:400 11px var(--font);color:var(--muted);padding:7px 11px;min-height:32px;cursor:pointer}
+.language-toggle button[aria-pressed="true"]{background:var(--ink);color:white}
+.language-toggle button:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+html[lang="en"] .message{font-size:15px;line-height:1.9}
+html[lang="en"] .families{display:block}
+html[lang="en"] .families p{flex-wrap:wrap;gap:5px 10px;margin:22px 0;font-size:13px}
+html[lang="en"] .families p>span{flex-basis:100%}
+html[lang="en"] .families strong{font-size:18px;margin-left:0}
+html[lang="en"] #date-heading{font-size:clamp(20px,5.2vw,26px);letter-spacing:-.6px}
+html[lang="en"] .location>.venue-address{white-space:normal;font-size:12px;line-height:1.8;letter-spacing:0;max-width:340px;margin-left:auto;margin-right:auto}
+html[lang="en"] .gift-note{line-height:1.8}
+html[lang="en"] .account-bank{max-width:230px}
+@media(max-width:400px){html[lang="en"] .account-bank{max-width:190px}}
