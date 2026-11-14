@@ -25,7 +25,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oooh+Baby&amp;family=Cormorant+Garamond:wght@400&amp;display=swap">
-<link rel="stylesheet" href="style.css?v=20261108-6">
+<link rel="stylesheet" href="style.css?v=20261114-7">
 </head>
 <body>
 <nav class="language-toggle" aria-label="언어 선택"><button type="button" data-language="ko" lang="ko" aria-pressed="true">KR</button><button type="button" data-language="en" lang="en" aria-pressed="false">EN</button></nav>
@@ -98,17 +98,39 @@
     <button type="button" class="venue-map-open" aria-label="약도 크게보기"><img class="venue-map" src="venue-map-light.png" alt="아펠가모 광화문 약도. 경복궁역 6번 출구와 광화문역 2번 출구 인근, 광화문 시민열린마당 동쪽 더케이트윈타워 A동 LL층." width="1448" height="1086" loading="lazy" decoding="async"></button><div class="map-links"><a class="button" href="https://map.naver.com/p/entry/place/31738014" target="_blank" rel="noopener noreferrer">네이버 지도 ↗</a><a class="button" href="https://map.kakao.com/link/search/아펠가모%20광화문" target="_blank" rel="noopener noreferrer">카카오맵 ↗</a></div>
   </section>
   <section class="gift-section" aria-label="마음 전하실 곳">
-    <details class="gift-details">
-      <summary><span data-i18n="accountsTitle">마음 전하실 곳(계좌 정보)</span> <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 8 5 5 5-5"/></svg></summary>
+    <h2 class="gift-heading" data-i18n="accountsTitle">마음 전하실 곳</h2>
+    <p class="gift-note">축의금이 아닌 마음으로도 충분히 감사드립니다.</p>
+    <details class="gift-details" id="gift-groom">
+      <summary><span>신랑 측</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 8 5 5 5-5"/></svg></summary>
       <div class="gift-content">
-        <p class="gift-note">축의금이 아닌 마음으로도 충분히 감사드립니다.</p>
-        <div class="account-card" data-side="groom">
-          <div class="account-info"><h3>신랑측</h3><p class="account-bank">기업은행</p><p class="account-number">117-162924-010-13</p></div>
-          <button type="button" class="copy-account" data-account="117-162924-010-13" aria-label="신랑측 계좌번호 복사하기">복사하기</button>
+        <div class="account-card" id="account-groom">
+          <div class="account-info"><h3>신랑</h3><p class="account-bank">기업은행</p><p class="account-number">117-162924-010-13</p></div>
+          <button type="button" class="copy-account" data-account="117-162924-010-13" aria-label="신랑 계좌번호 복사하기">복사하기</button>
         </div>
-        <div class="account-card" data-side="bride">
-          <div class="account-info"><h3>신부측</h3><p class="account-bank">하나은행</p><p class="account-number">166-910529-20807</p></div>
-          <button type="button" class="copy-account" data-account="166-910529-20807" aria-label="신부측 계좌번호 복사하기">복사하기</button>
+        <div class="account-card" id="account-groom-1">
+          <div class="account-info"><h3>신랑 아버지</h3><p class="account-bank">기업은행</p><p class="account-number">401-013119-02-031</p></div>
+          <button type="button" class="copy-account" data-account="401-013119-02-031" aria-label="신랑 아버지 계좌번호 복사하기">복사하기</button>
+        </div>
+        <div class="account-card" id="account-groom-2">
+          <div class="account-info"><h3>신랑 어머니</h3><p class="account-bank">기업은행</p><p class="account-number">401-013023-02-019</p></div>
+          <button type="button" class="copy-account" data-account="401-013023-02-019" aria-label="신랑 어머니 계좌번호 복사하기">복사하기</button>
+        </div>
+      </div>
+    </details>
+    <details class="gift-details" id="gift-bride">
+      <summary><span>신부 측</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 8 5 5 5-5"/></svg></summary>
+      <div class="gift-content">
+        <div class="account-card" id="account-bride">
+          <div class="account-info"><h3>신부</h3><p class="account-bank">하나은행</p><p class="account-number">166-910529-20807</p></div>
+          <button type="button" class="copy-account" data-account="166-910529-20807" aria-label="신부 계좌번호 복사하기">복사하기</button>
+        </div>
+        <div class="account-card" id="account-bride-1">
+          <div class="account-info"><h3>신부 아버지</h3><p class="account-bank">KB국민은행</p><p class="account-number">4266-06-200341</p></div>
+          <button type="button" class="copy-account" data-account="4266-06-200341" aria-label="신부 아버지 계좌번호 복사하기">복사하기</button>
+        </div>
+        <div class="account-card" id="account-bride-2">
+          <div class="account-info"><h3>신부 어머니</h3><p class="account-bank">KB국민은행</p><p class="account-number">428225-88-100882</p></div>
+          <button type="button" class="copy-account" data-account="428225-88-100882" aria-label="신부 어머니 계좌번호 복사하기">복사하기</button>
         </div>
       </div>
     </details>
@@ -125,7 +147,7 @@
   <div id="viewer-track" class="viewer-track" aria-label="큰 사진, 좌우로 밀어서 넘기기"></div>
   <p id="viewer-count" aria-live="polite"></p>
 </dialog>
-<script src="i18n.js?v=20261108-6" defer></script>
-<script src="app.js?v=20261108-6" defer></script>
+<script src="i18n.js?v=20261114-7" defer></script>
+<script src="app.js?v=20261114-7" defer></script>
 </body>
 </html>

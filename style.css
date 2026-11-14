@@ -98,13 +98,13 @@
 
 /* A quiet, initially collapsed account section. */
 .gift-section{padding:0 24px 64px}
-.gift-details{border-top:1px solid #deddd8;border-bottom:1px solid #deddd8;text-align:left}
-.gift-details summary{list-style:none;display:flex;align-items:center;justify-content:center;gap:14px;padding:22px 12px;font-size:14px;font-weight:500;cursor:pointer}
+.gift-details{border:1px solid #deddd8;border-radius:12px;background:#fff;text-align:left}
+.gift-details summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 16px;font-size:14px;font-weight:500;cursor:pointer}
 .gift-details summary::-webkit-details-marker{display:none}
 .gift-details summary svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.2;transition:transform .25s}
 .gift-details[open] summary svg{transform:rotate(180deg)}
 .gift-details summary:focus-visible,.copy-account:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
-.gift-content{padding:0 0 12px}
+.gift-content{padding:0 16px 8px}
 .gift-note{text-align:center;font-size:14px;line-height:1.9;color:var(--muted);margin:0 0 24px;word-break:keep-all}
 .account-card{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 4px;border-top:1px solid #eeede9}
 .account-info{min-width:0}.account-info h3{font-size:12px;font-weight:500;margin:0 0 9px}.account-bank{font-size:11px;color:var(--muted);margin:0 0 5px}.account-number{font-size:14px;letter-spacing:.3px;margin:0;overflow-wrap:anywhere;font-variant-numeric:tabular-nums;user-select:text}
@@ -148,3 +148,6 @@ html[lang="en"] .account-bank{max-width:230px}
 .map-zoom-controls button{min-width:44px;min-height:44px;border:0;border-radius:999px;background:transparent;color:inherit;font:400 22px var(--font);cursor:pointer}
 .map-zoom-controls #map-zoom-reset{font-size:13px;min-width:66px}.map-zoom-controls button:disabled{opacity:.3;cursor:default}.map-zoom-controls button:focus-visible{outline:2px solid white;outline-offset:1px}
 @media(min-width:800px){.map-zoom-canvas{width:min(100%,calc((100dvh - 150px)*1.333333))}}
+
+.gift-heading{text-align:center;font-size:18px;font-weight:500;margin:0 0 12px}
+.gift-details + .gift-details{margin-top:12px}

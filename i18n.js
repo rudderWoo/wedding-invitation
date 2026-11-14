@@ -1,13 +1,13 @@
 (() => {
   const messages = {
     ko: {
-      title:'종규 ♥ 해빈 — 결혼합니다', accountsTitle:'마음 전하실 곳(계좌 정보)',
+      title:'종규 ♥ 해빈 — 결혼합니다', accountsTitle:'마음 전하실 곳',
       countdown:'종규와 해빈의 결혼식이 {days}일 남았습니다', today:'오늘, 저희 결혼합니다', thanks:'함께해 주셔서 감사합니다',
       photoStatus:'사진 {index} / {total}', photoOpen:'사진 {index} / {total}, 크게보기', photoAlt:'종규와 해빈의 웨딩 사진 {index}',
       copy:'복사하기', copied:'복사 완료', copiedMessage:'계좌번호를 복사했습니다', copyFailed:'자동 복사가 되지 않았습니다. 선택된 계좌번호를 길게 눌러 복사해 주세요'
     },
     en: {
-      title:"Jonggyu ♥ Haebin — We're getting married", accountsTitle:'With Love (Bank Details)',
+      title:"Jonggyu ♥ Haebin — We're getting married", accountsTitle:'With Love',
       countdown:'{days} days until Jonggyu & Haebin’s wedding', today:'Today is our wedding day', thanks:'Thank you for celebrating with us',
       photoStatus:'Photo {index} of {total}', photoOpen:'Photo {index} of {total}, open full size', photoAlt:'Jonggyu and Haebin’s wedding photo {index}',
       copy:'Copy', copied:'Copied', copiedMessage:'Account number copied', copyFailed:'Unable to copy automatically. Please press and hold the selected account number to copy it.'
@@ -32,9 +32,20 @@
     ['.venue-address', 'Tower A, LL Floor, The K Twin Towers, 50 Jong-ro 1-gil, Jongno-gu, Seoul'],
     ['.map-links a:nth-child(1)', 'Naver Map ↗'], ['.map-links a:nth-child(2)', 'Kakao Map ↗'],
     ['.gift-note', 'Your love and warm wishes are more than enough. Thank you from the bottom of our hearts.'],
-    ['[data-side="groom"] h3', 'Groom'], ['[data-side="bride"] h3', 'Bride'],
-    ['[data-side="groom"] .account-bank', 'IBK Industrial Bank of Korea'],
-    ['[data-side="bride"] .account-bank', 'Hana Bank']
+    ["#gift-groom summary span","Groom’s Side"],
+    ["#account-groom h3","Groom"],
+    ["#account-groom .account-bank","IBK Industrial Bank of Korea"],
+    ["#account-groom-1 h3","Groom’s Father"],
+    ["#account-groom-1 .account-bank","IBK Industrial Bank of Korea"],
+    ["#account-groom-2 h3","Groom’s Mother"],
+    ["#account-groom-2 .account-bank","IBK Industrial Bank of Korea"],
+    ["#gift-bride summary span","Bride’s Side"],
+    ["#account-bride h3","Bride"],
+    ["#account-bride .account-bank","Hana Bank"],
+    ["#account-bride-1 h3","Bride’s Father"],
+    ["#account-bride-1 .account-bank","KB Kookmin Bank"],
+    ["#account-bride-2 h3","Bride’s Mother"],
+    ["#account-bride-2 .account-bank","KB Kookmin Bank"]
   ].map(([selector,en]) => {const el=document.querySelector(selector); return {el,ko:el.textContent,en};});
   const attrs = [
     ['.language-toggle','aria-label','Choose language'],
@@ -52,8 +63,12 @@
     ['.viewer-close','aria-label','Close photo viewer'],
     ['#viewer-track','aria-label','Full-size photos. Swipe left or right to browse.'],
     ['.gift-section','aria-label','With love and bank details'],
-    ['[data-side="groom"] .copy-account','aria-label','Copy groom’s account number'],
-    ['[data-side="bride"] .copy-account','aria-label','Copy bride’s account number'],
+    ["#account-groom .copy-account","aria-label","Copy account number for Groom"],
+    ["#account-groom-1 .copy-account","aria-label","Copy account number for Groom’s Father"],
+    ["#account-groom-2 .copy-account","aria-label","Copy account number for Groom’s Mother"],
+    ["#account-bride .copy-account","aria-label","Copy account number for Bride"],
+    ["#account-bride-1 .copy-account","aria-label","Copy account number for Bride’s Father"],
+    ["#account-bride-2 .copy-account","aria-label","Copy account number for Bride’s Mother"],
     ['.cover-photo img','alt','Jonggyu and Haebin smiling and holding hands'],
     ['.venue-map','alt','Apelgamo Gwanghwamun at The K Twin Towers, Tower A, LL floor. Near Gyeongbokgung Station Exit 6 and Gwanghwamun Station Exit 2.']
   ].map(([selector,attr,en])=>{const el=document.querySelector(selector);return {el,attr,ko:el.getAttribute(attr),en};});
